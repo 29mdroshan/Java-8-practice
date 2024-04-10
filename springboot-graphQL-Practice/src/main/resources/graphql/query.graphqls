@@ -1,0 +1,53 @@
+
+type Query {
+	firstQuery:String
+    getStudentByName(name: String,subjectNameFilter : SubjectNameFilter): [Student]
+    allStudent: [Student]
+}
+
+type Mutation {
+	fullName(firstName:String,lastName:String):String
+    saveStudent(addStudentInput: AddStudentInput): Student
+    deleteStudent(id:String):String
+}
+
+
+type Student {
+    id: ID!
+    name: String!
+    email: String!
+    subjects: [Subjects]
+    
+}
+type Subjects{
+	id:ID!
+	subjectName:String!
+	marksObtained:Float
+}
+enum SubjectNameFilter {
+	
+	Java
+	MySql
+	Python
+}
+
+
+
+
+input AddStudentInput {
+    name: String
+    email: String
+    subjects:[SubjectInput]
+   	
+}
+
+input SubjectInput{
+	id:ID!
+	subjectName:String!
+	marksObtained:Float
+
+}
+
+
+
+
